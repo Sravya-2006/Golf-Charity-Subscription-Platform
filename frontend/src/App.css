@@ -206,3 +206,7 @@ nav a:hover {
 .float-card {
   animation: float 4s ease-in-out infinite !important;
 }
+select option {
+  background: #ffffff !important;
+  color: #111827 !important;
+}
