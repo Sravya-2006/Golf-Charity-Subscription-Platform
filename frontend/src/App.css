@@ -210,3 +210,32 @@ select option {
   background: #ffffff !important;
   color: #111827 !important;
 }
+@media (max-width: 768px) {
+  /* Login & Register split layout */
+  div[style*="display: flex"][style*="minHeight: 100vh"] {
+    flex-direction: column !important;
+  }
+  
+  /* Navbar */
+  nav div[style*="gap: 32px"] {
+    gap: 12px !important;
+  }
+
+  /* Hero section */
+  div[style*="padding: 80px 6%"] {
+    flex-direction: column !important;
+    padding: 40px 5% !important;
+  }
+
+  /* Plan grid */
+  div[style*="gridTemplateColumns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Dashboard sidebar */
+  div[style*="width: 260px"] {
+    width: 100% !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+  }
+}
