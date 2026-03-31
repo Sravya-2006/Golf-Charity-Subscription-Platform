@@ -10,7 +10,7 @@ const Subscribe = () => {
   const [contribution, setContribution] = useState(10);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const { user, setUser } = useAuth();
+  const { setUser } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {

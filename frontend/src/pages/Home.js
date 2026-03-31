@@ -8,20 +8,42 @@ const Home = () => {
 
   return (
     <div style={styles.container}>
+        <style>{`
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0px); }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .hero-title { animation: fadeInUp 0.7s ease forwards; }
+  .hero-sub { animation: fadeInUp 0.7s ease 0.2s forwards; opacity: 0; }
+  .hero-btns { animation: fadeInUp 0.7s ease 0.35s forwards; opacity: 0; }
+  .float-card { animation: float 4s ease-in-out infinite; }
+  .step-1 { animation: fadeInUp 0.6s ease 0.1s forwards; opacity: 0; }
+  .step-2 { animation: fadeInUp 0.6s ease 0.25s forwards; opacity: 0; }
+  .step-3 { animation: fadeInUp 0.6s ease 0.4s forwards; opacity: 0; }
+`}</style>
 
       {/* Hero */}
       <div style={styles.hero}>
         <div style={styles.heroInner}>
           <div style={styles.badge}>🌍 Supporting Charities Worldwide</div>
-          <h1 style={styles.heroTitle}>
+          <h1 style={styles.heroTitle} className="hero-title">
             Golf that gives<br />
             <span style={styles.highlight}>back to the world.</span>
           </h1>
-          <p style={styles.heroSubtitle}>
+          <p style={styles.heroSubtitle} className="hero-sub">
             Enter your scores. Support a cause you love. Win monthly prizes.
             It's golf with a purpose — and every round counts.
           </p>
-          <div style={styles.heroButtons}>
+          <div style={styles.heroButtons} className="hero-btns">
             <button style={styles.primaryBtn} onClick={() => navigate(user ? '/dashboard' : '/register')}>
               {user ? 'Go to Dashboard' : 'Start for Free →'}
             </button>
@@ -39,7 +61,7 @@ const Home = () => {
           </div>
         </div>
         <div style={styles.heroVisual}>
-          <div style={styles.visualCard}>
+          <div style={styles.visualCard} className="float-card">
             <div style={styles.visualHeader}>
               <span style={styles.visualDot}></span>
               <span style={styles.visualTitle}>This Month's Draw</span>
@@ -76,7 +98,7 @@ const Home = () => {
               { num: '02', icon: '⛳', title: 'Log your scores', desc: 'Enter your last 5 Stableford scores (1–45). Your scores are your draw entries — the more you play, the better.' },
               { num: '03', icon: '🎉', title: 'Win & give back', desc: 'Each month we run a draw. Match 3, 4, or 5 numbers to win. Your charity gets your contribution regardless.' },
             ].map((step, i) => (
-              <div key={i} style={styles.stepCard}>
+              <div key={i} style={styles.stepCard} className={`step-${i+1}`}>
                 <div style={styles.stepNum}>{step.num}</div>
                 <div style={styles.stepIcon}>{step.icon}</div>
                 <h3 style={styles.stepTitle}>{step.title}</h3>

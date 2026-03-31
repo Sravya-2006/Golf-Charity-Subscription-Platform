@@ -18,6 +18,7 @@ const Dashboard = () => {
     if (!user) { navigate('/login'); return; }
     fetchScores();
     fetchDraws();
+  // eslint-disable-next-line
   }, []);
 
   const fetchScores = async () => {

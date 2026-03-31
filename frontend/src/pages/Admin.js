@@ -19,6 +19,7 @@ const Admin = () => {
   useEffect(() => {
     if (!user || user.role !== 'admin') { navigate('/login'); return; }
     fetchAll();
+  // eslint-disable-next-line
   }, []);
 
   const fetchAll = async () => {
