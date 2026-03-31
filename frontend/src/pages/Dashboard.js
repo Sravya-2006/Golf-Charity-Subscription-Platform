@@ -59,11 +59,22 @@ const Dashboard = () => {
   const isSubscribed = user.subscription?.status === 'active';
 
   return (
-    <div style={styles.container}>
+    <div style={styles.container} className="dash-container">
+        <style>{`
+  @media (min-width: 769px) {
+    .dash-container { flex-direction: row !important; }
+    .dash-sidebar { width: 260px !important; min-width: 260px !important; flex-direction: column !important; border-right: 1px solid #e5e7eb !important; border-bottom: none !important; height: 100vh !important; position: sticky !important; top: 0 !important; }
+    .dash-nav { flex-direction: column !important; overflow-x: unset !important; }
+    .dash-main { padding: 40px 48px !important; }
+    .stats-grid { grid-template-columns: repeat(4, 1fr) !important; }
+    .actions-grid { grid-template-columns: repeat(3, 1fr) !important; }
+    .score-form { flex-direction: row !important; align-items: flex-end !important; }
+  }
+`}</style>
       {/* Sidebar */}
-      <div style={styles.sidebar}>
+      <div style={styles.sidebar} className="dash-sidebar">
         <div style={styles.sidebarLogo}>⛳ GolfGive</div>
-        <nav style={styles.nav}>
+        <nav style={styles.nav} className="dash-nav">
           {['overview', 'scores', 'draws', 'charity'].map(tab => (
             <button key={tab} style={{ ...styles.navItem, ...(activeTab === tab ? styles.navActive : {}) }}
               onClick={() => setActiveTab(tab)}>
@@ -76,7 +87,7 @@ const Dashboard = () => {
       </div>
 
       {/* Main Content */}
-      <div style={styles.main}>
+      <div style={styles.main} className="dash-main">
         <div style={styles.header}>
           <h1 style={styles.headerTitle}>Welcome back, {user.name}! 👋</h1>
           <div style={{ ...styles.subBadge, background: isSubscribed ? 'rgba(34,197,94,0.2)' : 'rgba(239,68,68,0.2)', color: isSubscribed ? '#22c55e' : '#ef4444' }}>
@@ -96,7 +107,7 @@ const Dashboard = () => {
         {/* Overview Tab */}
         {activeTab === 'overview' && (
           <div>
-            <div style={styles.statsGrid}>
+            <div style={styles.statsGrid} className="stats-grid">
               <div style={styles.statCard}>
                 <div style={styles.statIcon}>⛳</div>
                 <div style={styles.statValue}>{scores.length}/5</div>
@@ -126,7 +137,7 @@ const Dashboard = () => {
           <div>
             <h2 style={styles.tabTitle}>My Golf Scores</h2>
             <p style={styles.tabSubtitle}>Enter your last 5 Stableford scores (1-45). Newest scores replace oldest automatically.</p>
-            <div style={styles.scoreForm}>
+            <div style={styles.scoreForm} className="score-form">
               <input style={styles.input} type="number" min="1" max="45" value={newScore}
                 onChange={e => setNewScore(e.target.value)} placeholder="Score (1-45)" />
               <input style={styles.input} type="date" value={newDate} onChange={e => setNewDate(e.target.value)} />
